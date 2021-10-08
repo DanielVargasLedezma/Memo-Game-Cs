@@ -54,6 +54,7 @@ namespace Memo_Game
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.button18 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button17 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -338,17 +339,30 @@ namespace Memo_Game
             this.button18.UseVisualStyleBackColor = true;
             this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label9.Location = new System.Drawing.Point(292, 365);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(185, 50);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "¡Ganador!";
+            this.label9.Visible = false;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImage = global::Memo_Game.Properties.Resources.photo_1554034483_04fda0d3507b1;
+            this.panel1.BackgroundImage = global::Memo_Game.Properties.Resources.Untitled;
             this.panel1.Controls.Add(this.button17);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Location = new System.Drawing.Point(7, 9);
+            this.panel1.Location = new System.Drawing.Point(8, 11);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(784, 429);
-            this.panel1.TabIndex = 9;
+            this.panel1.TabIndex = 11;
             // 
             // button17
             // 
@@ -389,9 +403,10 @@ namespace Memo_Game
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.BackgroundImage = global::Memo_Game.Properties.Resources.photo_1554034483_04fda0d3507b1;
+            this.BackgroundImage = global::Memo_Game.Properties.Resources.Untitled;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.button18);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -437,6 +452,7 @@ namespace Memo_Game
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Label label8;

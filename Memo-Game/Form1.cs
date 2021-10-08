@@ -15,11 +15,21 @@ namespace Memo_Game
     {
         private readonly TableController controller;
 
+        private int past_i;
+
+        private int past_j;
+
         public Memogame()
         {
             controller = new TableController();
 
+            past_i = 0;
+            
+            past_j = 0;
+
             InitializeComponent();
+
+            //ProbarJuego();
         }
 
         private void ChangeState(int k, int l)
@@ -27,44 +37,85 @@ namespace Memo_Game
             this.tableLayoutPanel1.GetControlFromPosition(k, l).Enabled = false;
         }
 
-        private void ActionPicked(int i, int j)
+        private int ActionPicked(int i, int j)
         {
             if(controller.RevealIfPossible(i, j))
             {
                 controller.Num_Movimientos++;
-                controller.Consecutive_Moves++;
+                this.label4.Text = "" + controller.Num_Movimientos;
+                controller.Consecutive_Moves = controller.Consecutive_Moves + 1;
 
                 ChangeState(i, j);
 
                 UpdateButtonsText();
 
-                controller.Consecutive_Moves++;
-
                 if (controller.Consecutive_Moves == 2)
                 {
-                    if(controller.CheckIfRevealedAreEquals())
+                    if (controller.CheckIfRevealedAreEquals())
                     {
+                        int[] posiciones = {i, j, past_i, past_j};
+
+                        controller.DiscoverIn(posiciones);
+
                         controller.Num_Parejas++;
+                        this.label5.Text = "" + controller.Num_Parejas;
 
                         int max_parejas = controller.GetCols() * controller.GetRows() / 2;
 
                         if(controller.Num_Parejas == max_parejas)
                         {
                             this.tableLayoutPanel1.Enabled = false;
+
+                            label9.Visible = true;
+
+                            button18.Enabled = false;
+
+                            past_i = i;
+
+                            past_j = j;
+
+                            return 420;
                         }
+
+                        controller.Consecutive_Moves = 0;
+
+                        past_i = i;
+
+                        past_j = j;
+
+                        return 1;
                     }
                     else
                     {
-                        Thread.Sleep(3000);
+                        this.tableLayoutPanel1.GetControlFromPosition(past_i, past_j).Enabled = true;
+                        
+                        this.tableLayoutPanel1.GetControlFromPosition(i, j).Enabled = true;
 
-                        controller.HideRevealed();
+                        controller.Consecutive_Moves = 0;
 
-                        UpdateButtonsText();
+                        past_i = i;
+
+                        past_j = j;
+
+                        return -1;
                     }
                 }
-                else
-                {
+            }
 
+            past_i = i;
+
+            past_j = j;
+
+            return 420;
+        }
+
+        private void ProbarJuego()
+        {
+            for (int i = 0; i < controller.GetRows(); i++)
+            {
+                for (int j = 0; j < controller.GetCols(); j++)
+                {
+                    this.tableLayoutPanel1.GetControlFromPosition(i, j).Text = "" + controller.GetValue(i, j);
                 }
             }
         }
@@ -89,82 +140,162 @@ namespace Memo_Game
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ActionPicked(0, 0);
+            if(ActionPicked(0, 0) == -1)
+            {
+                Thread.Sleep(3000);
+                controller.HideRevealed();
+                UpdateButtonsText();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ActionPicked(1, 0);
+            if (ActionPicked(1, 0) == -1)
+            {
+                Thread.Sleep(3000);
+                controller.HideRevealed();
+                UpdateButtonsText();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            if (ActionPicked(2, 0) == -1)
+            {
+                Thread.Sleep(3000);
+                controller.HideRevealed();
+                UpdateButtonsText();
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            if (ActionPicked(3, 0) == -1)
+            {
+                Thread.Sleep(3000);
+                controller.HideRevealed();
+                UpdateButtonsText();
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            if (ActionPicked(0, 1) == -1)
+            {
+                Thread.Sleep(3000);
+                controller.HideRevealed();
+                UpdateButtonsText();
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            if (ActionPicked(1, 1) == -1)
+            {
+                Thread.Sleep(3000);
+                controller.HideRevealed();
+                UpdateButtonsText();
+            }
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-
+            if (ActionPicked(2, 1) == -1)
+            {
+                Thread.Sleep(3000);
+                controller.HideRevealed();
+                UpdateButtonsText();
+            }
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-
+            if (ActionPicked(3, 1) == -1)
+            {
+                Thread.Sleep(3000);
+                controller.HideRevealed();
+                UpdateButtonsText();
+            }
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-
+            if (ActionPicked(0, 2) == -1)
+            {
+                Thread.Sleep(3000);
+                controller.HideRevealed();
+                UpdateButtonsText();
+            }
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-
+            if (ActionPicked(1, 2) == -1)
+            {
+                Thread.Sleep(3000);
+                controller.HideRevealed();
+                UpdateButtonsText();
+            }
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-
+            if (ActionPicked(2, 2) == -1)
+            {
+                Thread.Sleep(3000);
+                controller.HideRevealed();
+                UpdateButtonsText();
+            }
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-
+            if (ActionPicked(3, 2) == -1)
+            {
+                Thread.Sleep(3000);
+                controller.HideRevealed();
+                UpdateButtonsText();
+            }
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
-
+            if (ActionPicked(0, 3) == -1)
+            {
+                Thread.Sleep(3000);
+                controller.HideRevealed();
+                UpdateButtonsText();
+            }
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
-
+            if (ActionPicked(1, 3) == -1)
+            {
+                Thread.Sleep(3000);
+                controller.HideRevealed();
+                UpdateButtonsText();
+            }
         }
 
         private void button15_Click(object sender, EventArgs e)
         {
-
+            if (ActionPicked(2, 3) == -1)
+            {
+                Thread.Sleep(3000);
+                controller.HideRevealed();
+                UpdateButtonsText();
+            }
         }
 
         private void button16_Click(object sender, EventArgs e)
         {
-
+            if (ActionPicked(3, 3) == -1)
+            {
+                Thread.Sleep(3000);
+                controller.HideRevealed();
+                UpdateButtonsText();
+            }
         }
 
         private void button17_Click(object sender, EventArgs e)

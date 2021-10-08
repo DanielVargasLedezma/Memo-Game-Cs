@@ -200,8 +200,6 @@ namespace Memo_Game
                         {
                             if (casillas[i, j].Letra == casillas[i_first, j_first].Letra)
                             {
-                                casillas[i, j].Estado = 3;
-                                casillas[i_first, j_first].Estado = 3;
                                 return true;
                             }
                         }
@@ -210,6 +208,52 @@ namespace Memo_Game
             }
 
             return false;
+        }
+
+        public int[] ObtenerPosicionesRevealed()
+        {
+            int[] posiciones = new int[4];
+
+            for(int i = 0; i < 4; i++)
+            {
+                posiciones[i] = -1;
+            }
+
+            for (int i = 0; i < row_count; i++)
+            {
+                for (int j = 0; j < col_count; j++)
+                {
+                    if (casillas[i, j].Estado == 2)
+                    {
+                        posiciones[0] = i;
+                        posiciones[1] = j;
+                    }
+                }
+            }
+
+            for (int i = 0; i < row_count; i++)
+            {
+                for (int j = 0; j < col_count; j++)
+                {
+                    if (i != posiciones[0] || j != posiciones[1])
+                    {
+                        if (casillas[i, j].Estado == 2)
+                        {
+                            posiciones[2] = i;
+                            posiciones[3] = j;
+                            return posiciones;
+                        }
+                    }
+                }
+            }
+
+            return posiciones;
+        }
+
+        public void DiscoverIn(int[] posiciones)
+        {
+            casillas[posiciones[0], posiciones[1]].Estado = 3;
+            casillas[posiciones[2], posiciones[3]].Estado = 3;
         }
     }
 }

@@ -88,5 +88,15 @@ namespace Memo_Game
         {
             return table.Row_Count;
         }
+
+        public int[] PosRevealed()
+        {
+            return table.ObtenerPosicionesRevealed();
+        }
+
+        public void DiscoverIn(int[] posiciones)
+        {
+            table.DiscoverIn(posiciones);
+        }
     }
 }
